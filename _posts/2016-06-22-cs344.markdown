@@ -18,6 +18,8 @@ In order to use HIP on AMD APUs, you need to install [ROCm][rocm] package. Just 
 @Kaveri-Ubuntu:~/git$ sudo apt-get install libopencv-dev
 {% endhighlight %}
 
+Also, at the moment, HIP is mainly developed on AMD Fiji discrete GPUs. If you have AMD APU like I do, you need to see [this](https://github.com/RadeonOpenCompute/ROCm/issues/4) to make it work.
+
 ### Hipify your CUDA code
 
 Once you have ROCm and OpenCV set up, you need to clone CS344 repository to your machine:
