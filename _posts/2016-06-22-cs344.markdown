@@ -1,17 +1,24 @@
 ---
 layout: post
 title:  "How to do Udacity CS344 Problem Sets using Open Software!"
-date:   2016-06-20 16:44:30 -0700
+date:   2016-06-22 21:10:30
 categories: HIP
+comments: true
 ---
-I learned how to program GPUs from Udacity CS344 [Intro to Parallel Programming][udacity-cs344]. At the time, I did not have an NVidia GPU. So, I needed to buy an NVidia GPU to do my homework on my home computer. Since then, I upgraded my computer to AMD APU and I was no longer able to run the homework on my main PC...
+I learned how to program GPUs from Udacity CS344 [Intro to Parallel Programming][udacity-cs344]. At the time, I did not have an NVidia GPU. So, I needed to buy an NVidia GPU to do my homework on my home computer. Since then, I upgraded my computer to an AMD Kaveri APU (A10-7850K) and sold the NVidia GPU. I was no longer able to run the homework on my main PC...
 
-That is untill now! AMD now has [HIP][amd-hip-github] that allows one to write portable GPGPU code that can be compiled to run on NVidia GPU and AMD GPU. HIP uses thin warpper to provide source code portability between NVidia's CUDA and AMD's HCC. You can read more about it [here][amd-hip-blog]. In this blog, I'll show you how I ported CS344 problem sets to run on my AMD Kaveri APU (A10-7850K).
+That is untill now! AMD now has [HIP][amd-hip-github] that allows one to write portable GPGPU code that can be compiled to run on NVidia GPU and AMD GPU. HIP uses thin warpper to provide source code portability between NVidia's CUDA and AMD's HCC. You can read more about it [here][amd-hip-blog].
+
+In this blog, I'll show you how I ported CS344 problem sets to run on my AMD Kaveri APU (A10-7850K).
+
+###Setting up the environment
 
 In order to use HIP on AMD APUs, you need to install [ROCm][rocm] package. Just follow the instruction and reboot when you are done. Also, CS344 problem sets use OpenCV 2.4 library. So, make sure that you have OpenCV library installed:
 {% highlight bash %}
 @Kaveri-Ubuntu:~/git$ sudo apt-get install libopencv-dev
 {% endhighlight %}
+
+###Hipify your CUDA code
 
 Once you have ROCm and OpenCV set up, you need to clone CS344 repository to your machine:
 {% highlight bash %}
@@ -50,8 +57,8 @@ Second, the converted CUDA file is no longer CUDA file, so its extension should 
 
 Third, fix up the code to make them compile. There are three things you need to do:
 {% highlight bash %}
-1. comment out "#include <cuda.h>" from util.h line 6 and HW1.cpp line 5.
-2. You also need to comment out "checkCudaErrors(hipFree(0));" from HW1.cpp line 27.
+1. Comment out "#include <cuda.h>" from util.h line 6 and HW1.cpp line 5.
+2. Also comment out "checkCudaErrors(hipFree(0));" from HW1.cpp line 27.
 3. Add "grid_launch_parm lp" as the first parameter of GPU kernel to student_func.cpp.
 {% endhighlight %}
 

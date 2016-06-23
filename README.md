@@ -1,2 +1,4 @@
-# briansp2020.github.io
-My Blog
+# Brian Park's Personal Website
+
+Runing on Github + Jekyll theme by [LiXizhi](https://github.com/lixizhi/lixizhi.github.io)**
+
