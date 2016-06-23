@@ -11,14 +11,14 @@ That is untill now! AMD now has [HIP][amd-hip-github] that allows one to write p
 
 In this blog, I'll show you how I ported CS344 problem sets to run on my AMD Kaveri APU (A10-7850K).
 
-###Setting up the environment
+##Setting up the environment
 
 In order to use HIP on AMD APUs, you need to install [ROCm][rocm] package. Just follow the instruction and reboot when you are done. Also, CS344 problem sets use OpenCV 2.4 library. So, make sure that you have OpenCV library installed:
 {% highlight bash %}
 @Kaveri-Ubuntu:~/git$ sudo apt-get install libopencv-dev
 {% endhighlight %}
 
-###Hipify your CUDA code
+##Hipify your CUDA code
 
 Once you have ROCm and OpenCV set up, you need to clone CS344 repository to your machine:
 {% highlight bash %}
