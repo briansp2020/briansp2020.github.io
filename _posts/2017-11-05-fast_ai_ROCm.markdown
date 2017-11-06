@@ -24,6 +24,7 @@ In order to use HIP/MIOpen on AMD hardware, you need to install [ROCm][rocm] pac
 Also, Keras and TensorFlow requires some python packages to be installed. So, make sure that you install the following packages:
 {% highlight bash %}
 @Ryzen1800X:~$ sudo apt-get install -y \
+    git \
     python-numpy \
     python-dev \
     python-wheel \
@@ -40,18 +41,18 @@ Also, Keras and TensorFlow requires some python packages to be installed. So, ma
     ipython-notebook
 {% endhighlight %}
 
-To install jupyter you must upgrade pip. While you are at it, install bcolz, and keras using pip.
+To install jupyter you must upgrade pip. While you are at it, install bcolz, and keras using pip as well. Installation of bcolz will take a while. So, be patient.
 {% highlight bash %}
 @Ryzen1800X:~$ sudo -H pip install --upgrade pip
 @Ryzen1800X:~$ sudo -H pip install jupyter bcolz keras
 {% endhighlight %}
 
-TensorFlow uses [Eigen][eigen]. Install hipEigen using the following command:
+TensorFlow uses [Eigen][eigen]. Install [hipEigen][hipeigen] using the following command:
 {% highlight bash %}
 @Ryzen1800X:~$ sudo git clone -b develop https://github.com/ROCmSoftwarePlatform/hipeigen.git /opt/rocm/hipeigen
 {% endhighlight %}
 
-Hip version of TensorFlow package is available on repo.radeon.com. Install it using the following commands:
+Hip version of [TensorFlow][amd-tensorflow] package is available on repo.radeon.com. Install it using the following commands:
 {% highlight bash %}
 @Ryzen1800X:~$ wget http://repo.radeon.com/rocm/misc/tensorflow/tensorflow-1.0.1-cp27-cp27mu-linux_x86_64.whl
 @Ryzen1800X:~$ sudo -H pip install tensorflow-1.0.1-cp27-cp27mu-linux_x86_64.whl
@@ -85,6 +86,4 @@ I plan on converting and testing all the class notebooks on my machine. I'll upd
 [amd-tensorflow]: https://github.com/ROCmSoftwarePlatform/hiptensorflow/blob/hip/README.ROCm.md
 [rocm]: https://github.com/RadeonOpenCompute/ROCm
 [miopen]: https://github.com/ROCmSoftwarePlatform/MIOpen
-[opencv]: http://opencv.org/
-[opencv-install]: https://github.com/BVLC/caffe/wiki/Ubuntu-16.04-or-15.10-OpenCV-3.1-Installation-Guide
-[hip-ps1]: https://github.com/briansp2020/cs344/tree/master/Problem%20Sets/Problem%20Set%201
+[hipeigen]: https://github.com/ROCmSoftwarePlatform/hipeigen
